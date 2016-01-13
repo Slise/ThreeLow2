@@ -19,9 +19,10 @@ int main(int argc, const char * argv[]) {
         
         GameController *gameController = [[GameController alloc] init];
         
-        while (YES) {
+        
+        while (TRUE) {
             
-            NSString* input = [userInput inputForPrompt:@"select an option: quit or play"];
+            NSString* input = [userInput inputForPrompt:@"Select an option: quit or play"];
             
             if ([input isEqualToString: @"quit\n"]) {
                 
@@ -33,21 +34,39 @@ int main(int argc, const char * argv[]) {
                 
                 [gameController rollDices];
                 
-                while (YES) {
+                int i = 0;
+                
+                while (TRUE) {
                     
-                    NSString *prompt = @"\n roll - continue play\n reset - reset dices\n exit - exit to start\n";
+                    NSString *prompt = @"\n roll - continue play\n score - display score\n rolled - display amount of rolls\n reset - reset dices\n exit - exit to restart game\n";
                     
                     NSString* innerInput = [userInput inputForPrompt:prompt];
                     
                     if ([innerInput isEqualToString:@"roll\n"]) {
-                        
+                        i++;
                         [gameController rollDices];
                     }
                     
-                        else if ([innerInput isEqualToString:@"reset\n"]) {
-                            [gameController resetDice];
+                    else if ([innerInput isEqualToString:@"score\n"]) {
+                    
+                        [gameController score];
+                        
+                    }
+                    
+                    else if ([innerInput isEqualToString:@"rolled\n"]) {
+                        
+                        NSLog(@"You've rolled %i times.", i);
+                        
+                    }
+
+                    
+                    else if ([innerInput isEqualToString:@"reset\n"]) {
+                            
+                        [gameController resetDice];
                             
                     }
+
+                    
                      else if ([innerInput isEqualToString:@"exit\n"]) {
                         
                         break;
@@ -56,4 +75,5 @@ int main(int argc, const char * argv[]) {
             }
         }
     }
+    return 0;
 }

@@ -13,16 +13,15 @@
 
 @property (strong, nonatomic) NSMutableArray *diceAvailable;
 @property (strong, nonatomic) NSMutableSet *heldDice;
+@property (assign, nonatomic) int sumOfScore;
 
 -(void)initializeDices;
 
 - (void)rollDices;
 
-- (void)holdDice;
-
-- (void)printValues;
-
 - (void)resetDice;
+
+- (void)holdDice:(int)diceIndex;
 
 - (void)score;
 

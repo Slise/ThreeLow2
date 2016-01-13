@@ -13,7 +13,9 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
+        
         _diceAvailable = [NSMutableArray array];
+        
         _heldDice = [NSMutableSet set];
         
         [self initializeDices];
@@ -36,19 +38,21 @@
     
     for (Dice *dice in self.diceAvailable) {
         
-        [dice getRandomNumber];
-        
-        NSLog(@"%d", dice.currentValue);
-        
+        if (![self.heldDice containsObject:dice]) {
+            
+            [dice getRandomNumber];
+            
+            NSLog(@"%d", dice.currentValue);
+            
+            
         }
     }
-
-- (void)holdDice {
-
+    for (Dice *dice in self.diceAvailable) {
+        
+        self.sumOfScore += dice.currentValue;
+    }
     
-}
-
-- (void)printValues {
+    
     
 }
 
@@ -56,9 +60,35 @@
     
     [self.heldDice removeAllObjects];
     
+    [self initializeDices];
+    
 }
 
+- (void)holdDice:(int)diceIndex {
+    
+    Dice *dice = [self.diceAvailable objectAtIndex:diceIndex];
+    
+    if ([self.heldDice containsObject:dice]) {
+        
+        [self.heldDice removeObject:dice];
+        
+        NSLog(@"Dice unheld is %d", diceIndex);
+        
+    } else {
+        
+        [self.heldDice addObject:dice];
+        
+        NSLog(@"Dice being held is %d", diceIndex);
+
+    }
+
+}
+
+
+
 - (void)score {
+    
+    NSLog(@"Your score: %d", self.sumOfScore);
     
 }
 
