@@ -48,7 +48,7 @@ int main(int argc, const char * argv[]) {
                     }
                     
                     else if ([innerInput isEqualToString:@"hold or unhold\n"]) {
-                        innerInput = [userInput inputForPrompt:@"Which dice would you like to hold?"];
+                        innerInput = [userInput inputForPrompt:@"Which dice would you like to hold:"];
                         int diceToHold = [innerInput intValue];
                         [gameController holdDice:diceToHold];
                         
