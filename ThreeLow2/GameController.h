@@ -14,6 +14,7 @@
 @property (strong, nonatomic) NSMutableArray *diceAvailable;
 @property (strong, nonatomic) NSMutableSet *heldDice;
 @property (assign, nonatomic) int sumOfScore;
+@property (assign, nonatomic) int timesRolled;
 
 -(void)initializeDices;
 
@@ -24,5 +25,7 @@
 - (void)holdDice:(int)diceIndex;
 
 - (void)score;
+
+-(int) rolled;
 
 @end

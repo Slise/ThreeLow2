@@ -34,7 +34,7 @@ int main(int argc, const char * argv[]) {
                 
                 [gameController rollDices];
                 
-                int i = 0;
+                //int i = 0;
                 
                 while (TRUE) {
                     
@@ -43,13 +43,15 @@ int main(int argc, const char * argv[]) {
                     NSString* innerInput = [userInput inputForPrompt:prompt];
                     
                     if ([innerInput isEqualToString:@"roll\n"]) {
-                        i++;
+                        //i++;
                         [gameController rollDices];
                     }
                     
                     else if ([innerInput isEqualToString:@"hold\n"]) {
                         innerInput = [userInput inputForPrompt:@"Which dice would you like to hold or release:"];
+                        
                         int diceToHold = [innerInput intValue];
+                        
                         [gameController holdDice:diceToHold];
                         
                     }
@@ -62,7 +64,7 @@ int main(int argc, const char * argv[]) {
                     
                     else if ([innerInput isEqualToString:@"rolled\n"]) {
                         
-                        NSLog(@"You've rolled %i times.", i);
+                        [gameController rolled];
                         
                     }
 

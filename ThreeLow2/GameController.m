@@ -18,6 +18,8 @@
         
         _heldDice = [NSMutableSet set];
         
+        self.timesRolled = 0;
+        
         [self initializeDices];
         
     }
@@ -36,7 +38,11 @@
 
 - (void)rollDices {
     
+     self.timesRolled++;
+    
     for (Dice *dice in self.diceAvailable) {
+        
+       
         
         if (![self.heldDice containsObject:dice]) {
         
@@ -44,8 +50,8 @@
             
             NSLog(@"%d", dice.currentValue);
             
-            
         } else {
+            
             NSLog(@"[%d]", dice.currentValue);
         }
     }
@@ -54,7 +60,11 @@
         self.sumOfScore += dice.currentValue;
     }
     
+}
+
+-(void)rolled {
     
+    NSLog(@"You've rolled %d times.", self.timesRolled);
     
 }
 
@@ -85,7 +95,6 @@
     }
 
 }
-
 
 
 - (void)score {
