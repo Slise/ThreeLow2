@@ -45,6 +45,8 @@
             NSLog(@"%d", dice.currentValue);
             
             
+        } else {
+            NSLog(@"[%d]", dice.currentValue);
         }
     }
     for (Dice *dice in self.diceAvailable) {
@@ -72,13 +74,13 @@
         
         [self.heldDice removeObject:dice];
         
-        NSLog(@"Dice unheld is %d", diceIndex);
+        NSLog(@"Released dice %d", diceIndex);
         
     } else {
         
         [self.heldDice addObject:dice];
         
-        NSLog(@"Dice being held is %d", diceIndex);
+        NSLog(@"Dice %d is held", diceIndex);
 
     }
 
