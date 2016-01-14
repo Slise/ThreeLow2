@@ -39,7 +39,7 @@
     for (Dice *dice in self.diceAvailable) {
         
         if (![self.heldDice containsObject:dice]) {
-            
+        
             [dice getRandomNumber];
             
             NSLog(@"%d", dice.currentValue);

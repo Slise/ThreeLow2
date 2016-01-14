@@ -38,7 +38,7 @@ int main(int argc, const char * argv[]) {
                 
                 while (TRUE) {
                     
-                    NSString *prompt = @"\n roll - continue play\n score - display score\n rolled - display amount of rolls\n reset - reset dices\n exit - exit to restart game\n";
+                    NSString *prompt = @"\n roll - continue play\n score - display score\n hold or unhold - select 0-4 to hold or unhold dice(s)\n rolled - display amount of rolls\n reset - reset dices\n exit - exit to restart game\n";
                     
                     NSString* innerInput = [userInput inputForPrompt:prompt];
                     
@@ -47,6 +47,13 @@ int main(int argc, const char * argv[]) {
                         [gameController rollDices];
                     }
                     
+                    else if ([innerInput isEqualToString:@"hold or unhold\n"]) {
+                        innerInput = [userInput inputForPrompt:@"Which dice would you like to hold?"];
+                        int diceToHold = [innerInput intValue];
+                        [gameController holdDice:diceToHold];
+                        
+                    }
+
                     else if ([innerInput isEqualToString:@"score\n"]) {
                     
                         [gameController score];
